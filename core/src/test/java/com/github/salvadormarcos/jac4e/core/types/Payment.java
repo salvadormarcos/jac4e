@@ -1,8 +1,5 @@
 package com.github.salvadormarcos.jac4e.core.types;
 
-import com.github.salvadormarcos.jac4e.core.EnumAttributeConverter;
-
-@EnumAttributeConverter
 public enum Payment {
 
     CASH(0),

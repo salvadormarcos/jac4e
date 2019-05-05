@@ -10,8 +10,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface EnumAttributeConverter {
 
-    String attributeName() default "value";
+    String attributeName() default "";
 
     boolean autoApply() default true;
+
+    boolean errorIfValueNotPresent() default false;
 
 }
