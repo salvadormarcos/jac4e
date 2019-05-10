@@ -5,8 +5,7 @@ import com.github.salvadormarcos.jac4e.core.types.Payment;
 import com.github.salvadormarcos.jac4e.core.types.YesNo;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BasicConvertTest {
 
@@ -37,6 +36,16 @@ public class BasicConvertTest {
         assertAll(
             () -> assertEquals(Payment.CREDIT_CARD, converter.convertToEntityAttribute(1)),
             () -> assertEquals((Integer) 1, converter.convertToDatabaseColumn(Payment.CREDIT_CARD))
+        );
+    }
+
+    @Test
+    public void convertFromNull() {
+        BaseEnumAttributeConverter<Payment, Integer> converter = new BaseEnumAttributeConverter<>(Payment.class, Integer.class);
+
+        assertAll(
+            () -> assertNull(converter.convertToDatabaseColumn(null)),
+            () -> assertNull(converter.convertToEntityAttribute(null))
         );
     }
 
