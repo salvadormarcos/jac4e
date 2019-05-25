@@ -15,10 +15,34 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.friendlyjava</groupId>
-            <artifactId>jpa-enum-core</artifactId>
+            <groupId>com.github.salvadormarcos</groupId>
+            <artifactId>jac4e-core</artifactId>
             <version>${project.version}</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.squareup</groupId>
+            <artifactId>javapoet</artifactId>
+        </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>eu.somatik.serviceloader-maven-plugin</groupId>
+                <artifactId>serviceloader-maven-plugin</artifactId>
+                <configuration>
+                    <services>
+                        <param>javax.annotation.processing.Processor</param>
+                    </services>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
