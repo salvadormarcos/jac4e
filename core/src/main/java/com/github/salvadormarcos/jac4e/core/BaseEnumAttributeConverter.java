@@ -3,12 +3,13 @@ package com.github.salvadormarcos.jac4e.core;
 import com.github.salvadormarcos.jac4e.core.exception.EnumMetadataException;
 import com.github.salvadormarcos.jac4e.core.exception.EnumValueDuplicateException;
 import com.github.salvadormarcos.jac4e.core.exception.EnumValueNotPresentException;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.AttributeConverter;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V> {
 
@@ -70,18 +71,7 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
 
     private void validateValueTypeOfConverter(Class<?> enumValueAttrType) {
         if (enumValueAttrType.isPrimitive()) {
-            Class<?> wrapper = Stream.of(Boolean.class, Character.class, Byte.class, Short.class, Integer.class, Long.class, Float.class, Double.class)
-                .filter(cls -> cls.equals(valueType))
-                .findFirst()
-                .orElse(null);
-
-            if (wrapper != null) {
-                try {
-                    Field primitiveType = wrapper.getDeclaredField("TYPE");
-                    valueType = (Class<V>) primitiveType.get(null);
-                } catch (NoSuchFieldException | IllegalAccessException e) {
-                }
-            }
+            valueType = (Class<V>) ClassUtils.wrapperToPrimitive(valueType);
         }
 
         final String property = enumType.getName() + "." + attributeName;
@@ -115,7 +105,7 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
     }
 
     protected void setAttributeName(String attributeName) {
-        if (attributeName == null || attributeName.isEmpty()) {
+        if (StringUtils.isBlank(attributeName)) {
             return;
         }
         this.attributeName = attributeName.trim();
