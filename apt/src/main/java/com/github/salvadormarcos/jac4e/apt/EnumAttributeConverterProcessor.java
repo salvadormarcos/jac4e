@@ -15,8 +15,6 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.TypeMirror;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
-import javax.tools.Diagnostic;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -37,9 +35,9 @@ public class EnumAttributeConverterProcessor extends AbstractProcessor {
 
         try {
             for (TypeElement enumType : annotatedEnuns) {
-                EnumAttributeConverter opts = enumType.getAnnotation(EnumAttributeConverter.class);
+                Jac4eOptions opts = new Jac4eOptions(enumType.getAnnotation(EnumAttributeConverter.class), processingEnv.getOptions());
 
-                TypeElement valueType = findAttributeTypeElementByName(enumType, opts.attributeName());
+                TypeElement valueType = findAttributeTypeElementByName(enumType, opts.getAttributeName());
 
                 createConverterJavaFile(enumType, valueType, opts).writeTo(processingEnv.getFiler());
             }
@@ -74,10 +72,15 @@ public class EnumAttributeConverterProcessor extends AbstractProcessor {
         throw new EnumMetadataException("The enum \"" + enumType.getQualifiedName() + "\" does not have the \"" + attributeName + "\" attribute!");
     }
 
-    private JavaFile createConverterJavaFile(TypeElement enumType, TypeElement attributeType, EnumAttributeConverter opts) {
+    private JavaFile createConverterJavaFile(TypeElement enumType, TypeElement attributeType, Jac4eOptions opts) {
         final ClassName enumTypeClassName = ClassName.get(enumType);
         final ClassName attributeTypeClassName = ClassName.get(attributeType);
-        final String packageName = enumTypeClassName.packageName();
+
+        String packageName = opts.getPackageName();
+
+        if (StringUtils.isBlank(packageName)) {
+            packageName = enumTypeClassName.packageName();
+        }
 
         final String converterName = String.join("", enumTypeClassName.simpleNames()) + "AttributeConverter";
 
@@ -97,27 +100,27 @@ public class EnumAttributeConverterProcessor extends AbstractProcessor {
         return ParameterizedTypeName.get(ClassName.get(parameterizedType), types);
     }
 
-    private void addJpaConverterAnnotation(TypeSpec.Builder converterBuilder, EnumAttributeConverter opts) {
+    private void addJpaConverterAnnotation(TypeSpec.Builder converterBuilder, Jac4eOptions opts) {
         AnnotationSpec.Builder builder = AnnotationSpec.builder(Converter.class);
 
-        if (opts.autoApply()) {
+        if (opts.isAutoApply()) {
             builder.addMember("autoApply", "$L", true);
         }
 
         converterBuilder.addAnnotation(builder.build());
     }
 
-    private void addConverterConstructor(TypeSpec.Builder converterBuilder, ClassName enumTypeClassName, ClassName attributeTypeClassName, EnumAttributeConverter opts) {
+    private void addConverterConstructor(TypeSpec.Builder converterBuilder, ClassName enumTypeClassName, ClassName attributeTypeClassName, Jac4eOptions opts) {
         MethodSpec.Builder builder = MethodSpec.constructorBuilder()
                 .addModifiers(Modifier.PUBLIC)
                 .addStatement("super($T.class, $T.class)", enumTypeClassName, attributeTypeClassName);
 
-        if (StringUtils.isNotBlank(opts.attributeName())) {
-            builder.addStatement("setAttributeName($S)", opts.attributeName());
+        if (StringUtils.isNotBlank(opts.getAttributeName())) {
+            builder.addStatement("setAttributeName($S)", opts.getAttributeName());
         }
 
-        if (opts.errorIfValueNotPresent()) {
-            builder.addStatement("setErrorIfValueNotPresent($L)", opts.errorIfValueNotPresent());
+        if (opts.isErrorIfValueNotPresent()) {
+            builder.addStatement("setErrorIfValueNotPresent($L)", true);
         }
 
         converterBuilder.addMethod(builder.build());
