@@ -10,10 +10,12 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 public @interface EnumAttributeConverter {
 
+    String packageName() default "";
+
     String attributeName() default "";
 
     boolean autoApply() default true;
 
-    boolean errorIfValueNotPresent() default false;
+    ValueNotFoundStrategy ifValueNotPresent() default ValueNotFoundStrategy.INHERITED;
 
 }
