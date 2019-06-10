@@ -1,8 +1,8 @@
-package com.github.salvadormarcos.jac4e.core;
+package com.github.microtweak.jac4e.core;
 
-import com.github.salvadormarcos.jac4e.core.types.Gender;
-import com.github.salvadormarcos.jac4e.core.types.Payment;
-import com.github.salvadormarcos.jac4e.core.types.YesNo;
+import com.github.microtweak.jac4e.core.types.Payment;
+import com.github.microtweak.jac4e.core.types.Gender;
+import com.github.microtweak.jac4e.core.types.YesNo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

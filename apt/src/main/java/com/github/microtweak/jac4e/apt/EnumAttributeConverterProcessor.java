@@ -1,8 +1,8 @@
-package com.github.salvadormarcos.jac4e.apt;
+package com.github.microtweak.jac4e.apt;
 
-import com.github.salvadormarcos.jac4e.core.BaseEnumAttributeConverter;
-import com.github.salvadormarcos.jac4e.core.EnumAttributeConverter;
-import com.github.salvadormarcos.jac4e.core.exception.EnumMetadataException;
+import com.github.microtweak.jac4e.core.BaseEnumAttributeConverter;
+import com.github.microtweak.jac4e.core.EnumAttributeConverter;
+import com.github.microtweak.jac4e.core.exception.EnumMetadataException;
 import com.squareup.javapoet.*;
 import org.apache.commons.lang3.StringUtils;
 

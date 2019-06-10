@@ -1,4 +1,4 @@
-package com.github.salvadormarcos.jac4e.core;
+package com.github.microtweak.jac4e.core;
 
 public enum ValueNotFoundStrategy {
 

@@ -1,10 +1,10 @@
-package com.github.salvadormarcos.jac4e.core;
+package com.github.microtweak.jac4e.core;
 
-import com.github.salvadormarcos.jac4e.core.exception.EnumMetadataException;
-import com.github.salvadormarcos.jac4e.core.exception.EnumValueDuplicateException;
-import com.github.salvadormarcos.jac4e.core.exception.EnumValueNotPresentException;
-import com.github.salvadormarcos.jac4e.core.types.Country;
-import com.github.salvadormarcos.jac4e.core.types.Payment;
+import com.github.microtweak.jac4e.core.exception.EnumValueDuplicateException;
+import com.github.microtweak.jac4e.core.types.Country;
+import com.github.microtweak.jac4e.core.types.Payment;
+import com.github.microtweak.jac4e.core.exception.EnumMetadataException;
+import com.github.microtweak.jac4e.core.exception.EnumValueNotPresentException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

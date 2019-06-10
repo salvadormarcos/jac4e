@@ -1,7 +1,7 @@
-package com.github.salvadormarcos.jac4e.apt;
+package com.github.microtweak.jac4e.apt;
 
-import com.github.salvadormarcos.jac4e.core.EnumAttributeConverter;
-import com.github.salvadormarcos.jac4e.core.ValueNotFoundStrategy;
+import com.github.microtweak.jac4e.core.EnumAttributeConverter;
+import com.github.microtweak.jac4e.core.ValueNotFoundStrategy;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;

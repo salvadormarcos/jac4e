@@ -1,4 +1,4 @@
-package com.github.salvadormarcos.jac4e.core.exception;
+package com.github.microtweak.jac4e.core.exception;
 
 public class EnumValueNotPresentException extends RuntimeException {
 

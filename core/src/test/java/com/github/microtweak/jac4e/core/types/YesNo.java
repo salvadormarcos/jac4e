@@ -1,4 +1,4 @@
-package com.github.salvadormarcos.jac4e.core.types;
+package com.github.microtweak.jac4e.core.types;
 
 public enum YesNo {
 
