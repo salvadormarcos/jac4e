@@ -11,7 +11,7 @@
 	
     <modules>
         <module>core</module>
-        <module>apt</module>
+        <module>processor</module>
     </modules>
 
     <name>jAC4e</name>
