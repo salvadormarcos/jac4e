@@ -11,7 +11,7 @@
 
     <artifactId>jac4e-processor</artifactId>
 
-    <name>jAC4e APT Module</name>
+    <name>jAC4e Processor</name>
 
     <dependencies>
         <dependency>

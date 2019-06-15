@@ -104,14 +104,14 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
         return constant;
     }
 
-    protected void setAttributeName(String attributeName) {
+    public void setAttributeName(String attributeName) {
         if (StringUtils.isBlank(attributeName)) {
             return;
         }
         this.attributeName = attributeName.trim();
     }
 
-    protected void setErrorIfValueNotPresent(boolean errorIfValueNotPresent) {
+    public void setErrorIfValueNotPresent(boolean errorIfValueNotPresent) {
         this.errorIfValueNotPresent = errorIfValueNotPresent;
     }
 

@@ -11,23 +11,18 @@
 
     <artifactId>jac4e-core</artifactId>
 
-    <name>jAC4e Core Module</name>
+    <name>jAC4e Core</name>
 
     <dependencies>
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

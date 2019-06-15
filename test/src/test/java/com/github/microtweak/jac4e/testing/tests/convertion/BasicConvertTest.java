@@ -1,11 +1,13 @@
-package com.github.microtweak.jac4e.core;
+package com.github.microtweak.jac4e.testing.tests.convertion;
 
-import com.github.microtweak.jac4e.core.types.Payment;
-import com.github.microtweak.jac4e.core.types.Gender;
-import com.github.microtweak.jac4e.core.types.YesNo;
+import com.github.microtweak.jac4e.core.BaseEnumAttributeConverter;
+import com.github.microtweak.jac4e.testing.beans.Gender;
+import com.github.microtweak.jac4e.testing.beans.Payment;
+import com.github.microtweak.jac4e.testing.beans.YesNo;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BasicConvertTest {
 
@@ -13,9 +15,9 @@ public class BasicConvertTest {
     public void convertEnumCharacter() {
         BaseEnumAttributeConverter<Gender, Character> converter = new BaseEnumAttributeConverter<>(Gender.class, Character.class);
 
-        assertAll(
+        Assertions.assertAll(
             () -> assertEquals(Gender.MALE, converter.convertToEntityAttribute('M')),
-            () -> assertEquals((Character) 'M', converter.convertToDatabaseColumn(Gender.MALE))
+            () -> Assertions.assertEquals((Character) 'M', converter.convertToDatabaseColumn(Gender.MALE))
         );
     }
 
@@ -23,9 +25,9 @@ public class BasicConvertTest {
     public void convertEnumBoolean() {
         BaseEnumAttributeConverter<YesNo, Boolean> converter = new BaseEnumAttributeConverter<>(YesNo.class, Boolean.class);
 
-        assertAll(
+        Assertions.assertAll(
             () -> assertEquals(YesNo.YES, converter.convertToEntityAttribute(true)),
-            () -> assertEquals(true, converter.convertToDatabaseColumn(YesNo.YES))
+            () -> Assertions.assertEquals(true, converter.convertToDatabaseColumn(YesNo.YES))
         );
     }
 
@@ -33,9 +35,9 @@ public class BasicConvertTest {
     public void convertEnumInteger() {
         BaseEnumAttributeConverter<Payment, Integer> converter = new BaseEnumAttributeConverter<>(Payment.class, Integer.class);
 
-        assertAll(
+        Assertions.assertAll(
             () -> assertEquals(Payment.CREDIT_CARD, converter.convertToEntityAttribute(1)),
-            () -> assertEquals((Integer) 1, converter.convertToDatabaseColumn(Payment.CREDIT_CARD))
+            () -> Assertions.assertEquals((Integer) 1, converter.convertToDatabaseColumn(Payment.CREDIT_CARD))
         );
     }
 
@@ -43,9 +45,9 @@ public class BasicConvertTest {
     public void convertFromNull() {
         BaseEnumAttributeConverter<Payment, Integer> converter = new BaseEnumAttributeConverter<>(Payment.class, Integer.class);
 
-        assertAll(
-            () -> assertNull(converter.convertToDatabaseColumn(null)),
-            () -> assertNull(converter.convertToEntityAttribute(null))
+        Assertions.assertAll(
+            () -> Assertions.assertNull(converter.convertToDatabaseColumn(null)),
+            () -> Assertions.assertNull(converter.convertToEntityAttribute(null))
         );
     }
 
