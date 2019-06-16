@@ -22,4 +22,8 @@ public class BaseJpaTest {
         getEntityManager().flush();
     }
 
+    protected void clear() {
+        getEntityManager().clear();
+    }
+
 }

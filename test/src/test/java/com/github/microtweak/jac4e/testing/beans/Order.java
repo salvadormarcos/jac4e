@@ -25,6 +25,7 @@ public class Order {
 
         COMPLETED('C');
 
+        @Getter
         private char value;
     }
 

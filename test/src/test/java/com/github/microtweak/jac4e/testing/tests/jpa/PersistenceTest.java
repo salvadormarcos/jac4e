@@ -17,12 +17,9 @@ public class PersistenceTest extends BaseJpaTest {
         order.setTotal(1000.0);
 
         save(order);
+        clear();
 
-        long orderId = order.getId();
-
-        getEntityManager().clear();
-
-        Order found = getEntityManager().find(Order.class, orderId);
+        Order found = getEntityManager().find(Order.class, order.getId());
 
         assertAll(
             () -> assertNotNull(found),
@@ -37,10 +34,9 @@ public class PersistenceTest extends BaseJpaTest {
         customer.setGender(Gender.FEMALE);
 
         save(customer);
+        clear();
 
-        long customerId = customer.getId();
-
-        Customer found = getEntityManager().find(Customer.class, customerId);
+        Customer found = getEntityManager().find(Customer.class, customer.getId());
 
         assertAll(
             () -> assertNotNull(found),
@@ -55,10 +51,9 @@ public class PersistenceTest extends BaseJpaTest {
         customer.setCountry(Country.UNITED_STATES);
 
         save(customer);
+        clear();
 
-        long customerId = customer.getId();
-
-        Customer found = getEntityManager().find(Customer.class, customerId);
+        Customer found = getEntityManager().find(Customer.class, customer.getId());
 
         assertAll(
             () -> assertNotNull(found),
