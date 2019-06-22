@@ -1,5 +1,6 @@
 package com.github.microtweak.jac4e.testing.beans;
 
+import com.github.microtweak.jac4e.testing.converter.CountryAttributeConverter;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;

@@ -80,6 +80,9 @@
                             <version>${project.version}</version>
                         </annotationProcessorPath>
                     </annotationProcessorPaths>
+                    <compilerArguments>
+                        <Ajac4e.packageName>com.github.microtweak.jac4e.testing.converter</Ajac4e.packageName>
+                    </compilerArguments>
                 </configuration>
             </plugin>
 
