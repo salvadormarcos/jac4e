@@ -1,4 +1,4 @@
-package com.github.microtweak.jac4e.apt;
+package com.github.microtweak.jac4e.processor;
 
 import com.github.microtweak.jac4e.core.EnumAttributeConverter;
 import com.github.microtweak.jac4e.core.ValueNotFoundStrategy;

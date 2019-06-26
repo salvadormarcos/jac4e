@@ -1,4 +1,4 @@
-package com.github.microtweak.jac4e.apt;
+package com.github.microtweak.jac4e.processor;
 
 import com.github.microtweak.jac4e.core.BaseEnumAttributeConverter;
 import com.github.microtweak.jac4e.core.EnumAttributeConverter;
@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class EnumAttributeConverterProcessor extends AbstractProcessor {
+public class Jac4eProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
