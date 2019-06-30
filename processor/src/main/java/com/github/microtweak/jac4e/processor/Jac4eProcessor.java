@@ -93,7 +93,9 @@ public class Jac4eProcessor extends AbstractProcessor {
 
         addConverterConstructor(builder, enumTypeClassName, attributeTypeClassName, opts);
 
-        return JavaFile.builder(packageName, builder.build()).build();
+        return JavaFile.builder(packageName, builder.build())
+                .skipJavaLangImports(true)
+                .build();
     }
 
     private ParameterizedTypeName toParameterizedTypeName(Class<?> parameterizedType, TypeName... types) {
