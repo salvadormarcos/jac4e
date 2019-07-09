@@ -34,7 +34,7 @@ Introduced an annotation processor that generates the implementation of the Attr
 ```xml
 <project>
     <properties>
-        <jac4e.version>0.0.1</jac4e.version>
+        <jac4e.version>0.0.2</jac4e.version>
     </properties>
 
     <dependencies>
