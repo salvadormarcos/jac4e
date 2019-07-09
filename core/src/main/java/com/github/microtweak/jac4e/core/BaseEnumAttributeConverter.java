@@ -1,7 +1,7 @@
 package com.github.microtweak.jac4e.core;
 
-import com.github.microtweak.jac4e.core.exception.EnumValueDuplicateException;
 import com.github.microtweak.jac4e.core.exception.EnumMetadataException;
+import com.github.microtweak.jac4e.core.exception.EnumValueDuplicateException;
 import com.github.microtweak.jac4e.core.exception.EnumValueNotPresentException;
 import org.apache.commons.lang3.ClassUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -86,12 +86,16 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
     @Override
     public V convertToDatabaseColumn(E attribute) {
         checkAndInitializeConverter();
-        return values.get(attribute);
+        return attribute == null ? null : values.get(attribute);
     }
 
     @Override
     public E convertToEntityAttribute(V dbData) {
         checkAndInitializeConverter();
+
+        if (dbData == null) {
+            return null;
+        }
 
         E constant = constants.get(dbData);
 

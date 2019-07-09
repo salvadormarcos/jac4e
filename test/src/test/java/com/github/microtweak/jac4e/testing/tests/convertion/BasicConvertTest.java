@@ -6,6 +6,8 @@ import com.github.microtweak.jac4e.testing.beans.Payment;
 import com.github.microtweak.jac4e.testing.beans.YesNo;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -41,9 +43,11 @@ public class BasicConvertTest {
         );
     }
 
-    @Test
-    public void convertFromNull() {
+    @ParameterizedTest
+    @ValueSource(strings = { "false", "true" })
+    public void convertFromNull(boolean errorIfValueNotPresent) {
         BaseEnumAttributeConverter<Payment, Integer> converter = new BaseEnumAttributeConverter<>(Payment.class, Integer.class);
+        converter.setErrorIfValueNotPresent(errorIfValueNotPresent);
 
         Assertions.assertAll(
             () -> Assertions.assertNull(converter.convertToDatabaseColumn(null)),
