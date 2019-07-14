@@ -6,4 +6,8 @@ public class EnumMetadataException extends RuntimeException {
         super(message);
     }
 
+    public EnumMetadataException(String message, Object... args) {
+        this(String.format(message, args));
+    }
+
 }
