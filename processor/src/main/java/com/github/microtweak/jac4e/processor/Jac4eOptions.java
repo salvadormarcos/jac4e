@@ -38,9 +38,6 @@ public class Jac4eOptions {
             case PROPERTY_ERROR_IF_VALUE_NOT_FOUND:
                 aptErrorIfValueNotPresent = Boolean.parseBoolean(value);
                 break;
-
-            default:
-                throw new UnsupportedOperationException("The property \"" + propertyName + "\" is not supported!");
         }
     }
 
