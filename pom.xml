@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>jac4e</artifactId>
-    <version>0.0.4-SNAPSHOT</version>
+    <version>0.0.4</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -32,7 +32,8 @@
     </scm>
 
     <properties>
-        <hibernate.version>4.3.11.Final</hibernate.version> <!-- Use this version to work even on bug HHH-8854 -->
+        <!-- Use this version to work even on bug HHH-8854 -->
+        <hibernate.version>4.3.11.Final</hibernate.version>
     </properties>
 
     <dependencyManagement>

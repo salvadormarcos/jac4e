@@ -8,7 +8,7 @@
     <parent>
         <groupId>com.github.microtweak</groupId>
         <artifactId>jac4e</artifactId>
-        <version>0.0.4-SNAPSHOT</version>
+        <version>0.0.4</version>
     </parent>
 
     <artifactId>jac4e-core</artifactId>
