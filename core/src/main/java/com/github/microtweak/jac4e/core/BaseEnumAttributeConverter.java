@@ -24,6 +24,8 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
     private Map<E, V> values;
     private Map<V, E> constants;
 
+    private boolean initialized;
+
     public BaseEnumAttributeConverter(Class<E> enumType, Class<V> valueType) {
         this.enumType = enumType;
         this.valueType = valueType;
@@ -31,8 +33,8 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
         this.attributeName = DEFAULT_ATTRIBUTE_NAME;
     }
 
-    private void checkAndInitializeConverter() {
-        if (values != null && constants != null) {
+    private synchronized void checkAndInitializeConverter() {
+        if (initialized) {
             return;
         }
 
@@ -58,6 +60,8 @@ public class BaseEnumAttributeConverter<E, V> implements AttributeConverter<E, V
                 values.put(enumConstant, enumValue);
                 constants.put(enumValue, enumConstant);
             }
+
+            initialized = true;
         } catch (NoSuchFieldException e) {
             throw new EnumMetadataException(
                 "There is no \"" + attributeName + "\" attribute declared in enum \"" + enumType.getName() + "\"!"
