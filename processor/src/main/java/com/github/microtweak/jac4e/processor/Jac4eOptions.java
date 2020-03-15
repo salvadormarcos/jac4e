@@ -10,9 +10,9 @@ public class Jac4eOptions {
 
     private static final String PREFIX = "jac4e.";
 
-    private static final String PROPERTY_PACKAGE_NAME = PREFIX + "packageName";
-    private static final String PROPERTY_ATTRIBUTE_NAME = PREFIX + "attributeName";
-    private static final String PROPERTY_ERROR_IF_VALUE_NOT_FOUND = PREFIX + "errorIfValueNotFound";
+    public static final String PROPERTY_PACKAGE_NAME = PREFIX + "packageName";
+    public static final String PROPERTY_ATTRIBUTE_NAME = PREFIX + "attributeName";
+    public static final String PROPERTY_ERROR_IF_VALUE_NOT_FOUND = PREFIX + "errorIfValueNotFound";
 
     private final EnumAttributeConverter enumOpts;
 

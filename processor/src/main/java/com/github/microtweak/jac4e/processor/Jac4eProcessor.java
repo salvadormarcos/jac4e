@@ -8,6 +8,9 @@ import org.apache.commons.lang3.StringUtils;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedOptions;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
@@ -19,11 +22,19 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import static com.github.microtweak.jac4e.processor.Jac4eOptions.*;
+
+@SupportedOptions({ PROPERTY_PACKAGE_NAME, PROPERTY_ATTRIBUTE_NAME, PROPERTY_ERROR_IF_VALUE_NOT_FOUND })
 public class Jac4eProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         return Collections.singleton( EnumAttributeConverter.class.getCanonicalName() );
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latest();
     }
 
     @Override
